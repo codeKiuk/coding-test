@@ -1,5 +1,5 @@
 # 곱하기 혹은 더하기
-
+# input : "02932136812305130357"
 def solution1():
     user_input = input()
 
@@ -43,7 +43,7 @@ def solution2():
 
     for fear in fears:
         group_count += 1
-        
+
         if (group_count >= fear):
             result += 1
             group_count = 0
