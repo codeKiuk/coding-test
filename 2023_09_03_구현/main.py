@@ -125,9 +125,24 @@ def solution4():
 
     print(count)
 
-solution4()
+# 문자열 재정렬 문제
+def solution5():
+    strings = input()
+    sum = 0
+    string_list = []
+    for i in strings:
+        if i.isalpha():
+            string_list.append(i)
+        else:
+            sum += int(i)
+
+    string_list.sort()
+
+    if sum != 0:
+        string_list.append(str(sum))
 
 
+    print(''.join(string_list)) 
 
 
-
+solution5()
