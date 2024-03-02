@@ -80,5 +80,54 @@ def solution3():
                     count += 1
 
 
+# 완전 탐색 문제
+# 왕실의 나이트 문제
+def solution4():
+    # 나이트가 이동할 수 있는 8가지 방향 정의
+    dx = [2, 2, -1, 1, -1, 1, -2, -2]
+    dy = [-1, 1, 2, 2, -2, -2, -1, 1] # a b c d e f g h
+
+
+    def format_y(y):
+        if y == 'a':
+            return 0
+        elif y == 'b':
+            return 1
+        elif y == 'c':
+            return 2
+        elif y == 'd':
+            return 3
+        elif y == 'e':
+            return 4
+        elif y == 'f':
+            return 5
+        elif y == 'g':
+            return 6
+        elif y == 'h':
+            return 7
+
+
+    # a1, h4 .. 
+    place = str(input())
+    x = int(place[1])
+    y = int(format_y(place[0]))
+
+    count = 0   
+
+    for i in range(8):
+        nx = x + dx[i]
+        ny = y + dy[i]
+
+        if nx < 1 or nx > 7 or ny < 1 or ny > 7:
+            continue        
+
+        count += 1
+
+    print(count)
+
+solution4()
+
+
+
 
 
