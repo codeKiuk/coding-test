@@ -1,5 +1,4 @@
 # 이차원 행렬 상하좌우 문제 | 시작 지점 1,1
-
 def solution1():
     directions_size = int(input())
     directions = list(map(str, input().split()))
@@ -12,7 +11,7 @@ def solution1():
 
     def check_overflow(block):
         # N * M 행렬을 벗어나게 되는 direction은 무시한다.
-        if block[0] >= directions_size or block[1] >= directions_size or block[0] <= 0 or block[1] <= 0:
+        if block[0] > directions_size or block[1] > directions_size or block[0] <= 0 or block[1] <= 0:
             return True
         else: 
             return False
@@ -36,5 +35,36 @@ def solution1():
 
     print(first_block)
 
-solution1()
+# 시각 문제
+# 정수 N이 주어지면, 00시 00분 00초부터 N시 59분 59초까지의 모든 시각 중에서 3이 하나라도 포함되는 모든 경우의 수를 구하는 프로그램
+def solution2():
+    n = int(input())
+    seconds = 60
+    minutes = 60
+    count = 0
 
+    def loop():
+        local_count = 0
+        for i in range(minutes):
+            minute = str(i)
+            if minute.find('3') != -1:
+                local_count += 60
+            else:
+                for j in range(seconds):
+                    second = str(j)
+                    if second.find('3') != -1:
+                        local_count += 1
+        return local_count
+
+    for hour in range(n+1):
+        string_hour = str(hour)
+        if string_hour.find('3') != -1:
+            count += 60 * 60
+        else:
+            count += loop()
+
+    print(count)    
+    pass
+
+# solution1()
+solution2()
