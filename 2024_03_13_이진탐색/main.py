@@ -18,25 +18,26 @@ def solution1():
     def binary_search(start, end, answer):
         print(f"start: {start}, end: {end} answer: {answer}")
 
+        middle = (start + end) // 2
+
         if start >= end:
             return answer
 
 
         result = 0
         for i in range(n):
-            if array[i] > start:
-                result += array[i] - start
+            if array[i] > middle:
+                result += array[i] - middle
             
 
-        middle = (start + end) // 2
         if result == m:
-            answer = start
+            answer = middle
             return answer
         elif result > m:
-            answer = start
+            answer = middle
             return binary_search(middle+1, end, answer)
         else:
-            return binary_search(start, middle, answer)
+            return binary_search(start, middle-1, answer)
         pass
 
 
