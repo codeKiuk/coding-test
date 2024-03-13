@@ -15,7 +15,6 @@ def solution1():
     while k > 0:
         if array_a[target_array_a] >= array_b[target_array_b]:
             break
-        
         array_a[target_array_a], array_b[target_array_b] = array_b[target_array_b], array_a[target_array_a]
 
         target_array_a -= 1
@@ -23,5 +22,4 @@ def solution1():
         k -= 1
     
     print("RESULT: ", sum(array_a))
-
-solution1()
+    
