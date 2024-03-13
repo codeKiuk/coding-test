@@ -35,6 +35,9 @@ def solution1():
             return answer
         elif result > m:
             answer = middle
+            # 중요 포인트
+            # middle값은 위에서 사용했으니, 이진 탐색을 위해서 middle보다 크거나 작은 배열만 탐색해도 된다!!!!
+            # 그냥 middle로 넘겨버리면 답 구할 수 없음
             return binary_search(middle+1, end, answer)
         else:
             return binary_search(start, middle-1, answer)
@@ -43,4 +46,19 @@ def solution1():
 
     print(binary_search(start, end, answer))
 
-solution1()
+# 정렬된 배열에서 특정 수의 개수 구하기
+def solution2():
+    n, x = map(int, input().split())
+    inputs = list(map(int, input().split()))
+
+    from bisect import bisect_left, bisect_right
+
+    smallest_index = bisect_left(inputs, x)
+    biggest_index = bisect_right(inputs, x)
+
+    result = biggest_index - smallest_index
+
+    print("result: ", result)
+    pass
+
+solution2()
