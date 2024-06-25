@@ -1,39 +1,7 @@
-def main2():
-    # 시간초과!
-    node, edge = map(int, input().split())
-    graph = [[0] * (node + 1) for _ in range(node + 1)]
-    visited = [False] * (node + 1)
-    count = 0
-
-    for i in range(edge):
-        n, m = map(int, input().split())
-        graph[n][m] = 1
-        graph[m][n] = 1
-        pass
-
-    from collections import deque
-    def bfs(v):
-        queue = deque([v])
-        while len(queue) > 0:
-            current = queue.popleft()
-            visited[current] = True
-            for j, value in enumerate(graph[current]):
-                if value == 1 and not visited[j] and j not in queue:
-                    queue.append(j)
-
-        pass
-
-    for i in range(1, node + 1):
-        if visited[i]:
-            continue
-        bfs(i)
-        count += 1
-
-    print(count)
-    pass
-
-
 def main():
+    import sys
+    input = sys.stdin.readline
+    
     # 2차원배열말고, 2차원 인접 리스트로 풀기..?
     from collections import deque
     
@@ -68,4 +36,45 @@ def main():
     print(count)
     pass
 
-main()
+
+def main2():
+    # 연결 관계 확인은 인접 행렬이 빠르다
+    import sys
+    input = sys.stdin.readline
+
+    node, edge = map(int, input().split())
+    graph = [[0] * (node + 1) for _ in range(node + 1)]
+    visited = [False] * (node + 1)
+    count = 0
+
+    for i in range(edge):
+        n, m = map(int, input().split())
+        graph[n][m] = 1
+        graph[m][n] = 1
+        pass
+
+    from collections import deque
+    def bfs(v):
+        queue = deque([v])
+        while len(queue) > 0:
+            current = queue.popleft()
+            visited[current] = True
+            for j, value in enumerate(graph[current]):
+                if value == 1 and not visited[j] and j not in queue:
+                    visited[j] = True
+                    graph[current][j] = 0
+                    graph[j][current] = 0
+                    queue.append(j)
+
+        pass
+
+    for i in range(1, node + 1):
+        if visited[i]:
+            continue
+        bfs(i)
+        count += 1
+
+    print(count)
+    pass
+
+main2()
