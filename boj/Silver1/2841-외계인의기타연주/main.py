@@ -51,10 +51,3 @@ def main():
     print(count)
 
 main()
-        
-"""        
-3 15
-1 5
-1 10
-1 5
-"""
