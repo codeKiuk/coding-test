@@ -43,4 +43,7 @@ counter = Counter(['red', 'blue', 'red'])
 
 counter['blue'] # 1
 dict(counter) # {'red': 2, 'blue': 1}
+
+for key, value in counter.items():
+    # key: 'red', value: 1
 ```
